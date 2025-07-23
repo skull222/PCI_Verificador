@@ -1,0 +1,157 @@
+body {
+    font-family: sans-serif;
+    color: #000000;
+    background-image: url("imagenes/fondo.png"); /* Cambia la ruta a la imagen de fondo */
+    background-size: cover; /* Ajusta la imagen al tamaño de la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita repeticiones */
+    background-attachment: fixed; /* Mantiene el fondo fijo al hacer scroll */
+}
+
+h1 {
+    background-color: #ddd;
+    padding: auto;
+    margin: 50px 25% 25px 25%;
+    max-width: auto;
+    width: 50%;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    font-size: auto;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+h2{
+    background-color: #ddd;
+    padding: 10px;
+    max-width: auto;
+    width: 50%;
+    margin: 0 25% 25px 25%;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+p {
+    background-color: #ddd;
+    padding: 10px;
+    max-width: 45%;
+    margin: auto;
+    margin-top: 20px;
+    border: 3px solid #000000;
+    border-radius: 15px;
+    font-size: 25px;
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.button-container {
+    display: flex;
+    flex-direction: row; /* Cambiado de column a row */
+    justify-content: center; /* Centrar los botones horizontalmente */
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+.Btn {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    position: relative;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin: 0 15px; /* Añadido para espacio entre botones */
+}
+
+.f, .i, .Y {
+    width: 100%;
+    height: 100%;
+    padding: auto;
+    margin-top: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    backdrop-filter: blur(0px);
+    letter-spacing: 0.8px;
+    border-radius: 10px;
+    transition: all 0.3s;
+    border: 1px solid rgba(156, 156, 156, 0.466);
+}
+
+.BF, .BI, .BY {
+    position: absolute;
+    padding: auto;
+    margin-top: 50px;
+    content: "";
+    width: 150%;
+    height: 150%;
+    z-index: -1;
+    border-radius: 10px;
+    pointer-events: none;
+    transition: all 0.3s;
+    border: 7 solid #000;
+}
+
+.BF {
+    background: #1877f2;
+}
+
+.BI {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.BY {
+    background: #ff0000;
+}
+
+.Btnfacebook:hover .BF {
+    transform: rotate(35deg);
+    transform-origin: bottom;
+}
+
+.Btnfacebook:hover .f {
+    border: 1px solid rgba(230, 230, 230, 0.466);
+    background-color: rgba(204, 204, 204, 0.466);
+    backdrop-filter: blur(4px);
+}
+
+.Btninstagram:hover .BI {
+    transform: rotate(35deg);
+    transform-origin: bottom;
+}
+
+.Btninstagram:hover .i {
+    border: 1px solid rgba(230, 230, 230, 0.466);
+    background-color: rgba(204, 204, 204, 0.466);
+}
+
+.Btnyoutube:hover .BY {
+    transform: rotate(35deg);
+    transform-origin: bottom;
+}
+
+.Btnyoutube:hover .Y {
+    border: 1px solid rgba(230, 230, 230, 0.466);
+    background-color: rgba(204, 204, 204, 0.466);
+    backdrop-filter: blur(4px);
+}
+
+        /* 📱 Media Query para Tablets */
+        @media (min-width: 400px) {
+            .container {
+                max-width: 800px;
+            }
+        }
+
+        /* 💻 Media Query para PC */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 600px;
+            }
+        }
