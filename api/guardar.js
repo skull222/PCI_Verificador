@@ -2,7 +2,7 @@
 const { Pool } = require('pg');
 
 const pool = new Pool({
-connectionString: process.env.DATABASE_URL,
+ connectionString: process.env.DATABASE_URL,
 ssl: { rejectUnauthorized: false },
 });
 
@@ -34,7 +34,7 @@ try {
         fecha,
         reunion,
         nombre_completo,
-        nombre_papa_mama,
+        nombre_papá_mamá,
         telefono,
         colonia,
         alcaldia,
