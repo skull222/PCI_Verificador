@@ -1,64 +1,73 @@
-// api/guardar.js
-const { Pool } = require('pg');
+import { Pool } from 'pg';
 
 const pool = new Pool({
- connectionString: process.env.DATABASE_URL,
-ssl: { rejectUnauthorized: false },
+  connectionString: process.env.DATABASE_URL,
+  ssl: { rejectUnauthorized: false }
 });
 
-module.exports = async (req, res) => {
-if (req.method !== "POST") {
-    return res.status(405).json({ error: "Método no permitido" });
-}
+export default async function handler(req, res) {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Método no permitido' });
+  }
 
-const {
-fecha,
-reunion,
-nombre_completo,
-nombre_papa_mama,
-telefono,
-colonia,
-alcaldia,
-invitado,
-celular_invitado,
-red_conexion,
-celula,
-verificador,
-red,
-oracion
-} = req.body;
+  const {
+    fecha,
+    reunion,
+    nombre_completo,
+    nombre_papa_mama,
+    telefono,
+    colonia,
+    alcaldia,
+    persona_que_te_invito,
+    celular_de_la_persona_que_invito,
+    como_nos_conocio,
+    asiste_a_celula,
+    verificador,
+    red,
+    oracion
+  } = req.body;
 
-try {
-const query = `
-INSERT INTO formulario (
-fecha, reunion, nombre_completo, nombre_papa_mama,
-telefono, colonia, alcaldia, invitado, celular_invitado,
-red_conexion, celula, verificador, red, oracion
-) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
-`;
+  try {
+    const query = `
+      INSERT INTO formulario (
+        fecha,
+        reunion,
+        nombre_completo,
+        nombre_papa_mama,
+        telefono,
+        colonia,
+        alcaldia,
+        persona_que_te_invito,
+        celular_de_la_persona_que_invito,
+        como_nos_conocio,
+        asiste_a_celula,
+        verificador,
+        red,
+        oracion
+      ) VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14);
+    `;
 
+    const values = [
+      fecha,
+      reunion,
+      nombre_completo,
+      nombre_papa_mama,
+      telefono,
+      colonia,
+      alcaldia,
+      persona_que_te_invito,
+      celular_de_la_persona_que_invito,
+      como_nos_conocio,
+      asiste_a_celula,
+      verificador,
+      red,
+      oracion
+    ];
 
-await pool.query(query, [
-fecha,
-reunion,
-nombre_completo,
-nombre_papa_mama,
-telefono,
-colonia,
-alcaldia,
-invitado,
-celular_invitado,
-red_conexion,
-celula,
-verificador,
-red,
-oracion
-]);
-
-
-    res.status(200).json({ mensaje: "Formulario guardado correctamente" });
-} catch (error) {
+    await pool.query(query, values);
+    return res.status(200).json({ mensaje: 'Formulario guardado correctamente' });
+  } catch (error) {
     console.error(error);
-    res.status(500).json({ error: "Error en el servidor" });
+    return res.status(500).json({ error: 'Error al guardar los datos' });
+  }
 }
-};
